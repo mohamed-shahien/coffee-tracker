@@ -7,7 +7,7 @@ import History from "./components/History";
 import Status from "./components/Stats";
 
 function App() {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const authenticatedContent = (
     <>
       <Status />
@@ -18,6 +18,8 @@ function App() {
     <Layout>
       <Hearo />
       <CoffeeForm></CoffeeForm>
+      {isAuthenticated && (authenticatedContent)}
+
     </Layout>
   );
 }
