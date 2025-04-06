@@ -7,7 +7,7 @@ import History from "./components/History";
 import Status from "./components/Stats";
 
 function App() {
-  const isAuthenticated = true;
+  const isAuthenticated = true; // This should be replaced with actual authentication logic
   const authenticatedContent = (
     <>
       <Status />
@@ -17,7 +17,7 @@ function App() {
   return (
     <Layout>
       <Hearo />
-      <CoffeeForm></CoffeeForm>
+      <CoffeeForm isAuthenticated={isAuthenticated}></CoffeeForm>
       {isAuthenticated && (authenticatedContent)}
 
     </Layout>

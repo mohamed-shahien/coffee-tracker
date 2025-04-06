@@ -1,20 +1,29 @@
 import React, { useState } from "react";
 import { coffeeOptions } from "../utils";
+import Modal from "./Modal";
+import Authentication from "./Authentication";
 
-const CoffeeForm = () => {
+const CoffeeForm = (props) => {
   const [selectedCoffee, setselectedCoffee] = useState(null);
   const [showcoffeeType, setshowCoffeeType] = useState(false);
   const [coffeCost, setcoffeCost] = useState(0);
   const [coffeMin, setcoffeMin] = useState(0);
   const [coffeHour, setcoffeHour] = useState(0);
-  function handlSubmitForm(e) {
-    e.preventDefault();
-    console.log("Selected coffee:", selectedCoffee);
-    console.log("Coffe cost:", coffeCost);
-    console.log("Time since consumption:", coffeHour, "hours", coffeMin, "mins");
+  const [showModale, setshowModale] = useState(0);
+  const {isAuthenticated } = props
+  function handlSubmitForm() {
+      if(!isAuthenticated){
+        setshowModale(true)
+        return
+      }
   }
   return (
     <>
+    {showModale &&(
+            <Modal handlwCloseModal={() => setshowModale(false)}>
+            <Authentication/>
+          </Modal>
+    )}
       <div className="section-header">
         <i className="fa-solid fa-pencil" />
         <h2>Start Tracking Today</h2>

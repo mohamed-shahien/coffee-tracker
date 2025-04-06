@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "./Modal";
+import Authentication from "./Authentication";
 
 const Layout = (props) => {
   const { children } = props;
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const header = (
     <header>
       <div>
@@ -9,7 +12,7 @@ const Layout = (props) => {
         <p>For Coffee Insatiates</p>
       </div>
 
-      <button>
+      <button onClick={() => setIsModalOpen(true)} className="sign-up">
         <p>Sign up free</p>
         <i className="fa-solid fa-mug-hot"></i>
       </button>
@@ -23,6 +26,12 @@ const Layout = (props) => {
 
   return (
     <>
+    {isModalOpen && (
+      <Modal handlwCloseModal={() => setIsModalOpen(false)}>
+        <Authentication/>
+      </Modal>
+    )}
+    
       {header}
       <main>{children}</main>
       {footer}
