@@ -1,17 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Authentication = () => {
+  const [isRegistration, setIsRegistration] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isauthentication, setisAuthentication] = useState(false);
+  async function hasndlAuthentication(e) {
+    
+  }
   return (
     <>
-      <h2 className='sign-up-text'>Sign-up</h2>
-      <p>sign in to your acount</p>
-      <input type="email" placeholder='Email' />
-      <input type="password" placeholder='**********' />
-      <button><p>Submit</p></button>
+      <h2 className='sign-up-text'> {isRegistration ? 'Sign-up' : 'Sign-in'}</h2>
+      <p>{isRegistration ? 'create your acount' : 'sign in to your acount'}</p>
+      <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='Email' />
+      <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder='**********' />
+      <button onClick={hasndlAuthentication}><p>Submit</p></button>
       <hr />
       <div className="register-content">
-        <p>Don&apos:t hav an acount?</p>
-        <button><p>sign up</p></button>
+        <p>{ isRegistration ? 'Already have an acount?' : 'Don\'t hav an acount?'}</p>
+        <button onClick={() => setIsRegistration(!isRegistration)}><p>{isRegistration ? 'Sign-up' : 'Sign-in'}</p></button>
       </div>
     </>
   )

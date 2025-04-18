@@ -15,7 +15,7 @@ function App() {
     </>
   );
   return (
-    <Layout>
+    <Layout is>
       <Hearo />
       <CoffeeForm isAuthenticated={isAuthenticated}></CoffeeForm>
       {isAuthenticated && (authenticatedContent)}
