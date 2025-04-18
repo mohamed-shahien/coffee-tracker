@@ -30,6 +30,7 @@ export function AuthProvider(props) {
     return signout(auth);
   }
 
+  
   const value = {
     user,
     GlobalDat,
